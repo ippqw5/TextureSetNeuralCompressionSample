@@ -1890,6 +1890,10 @@ namespace d3d12
 			if (!cmdI->deviceI->supportCoopVectors)
 				return;
 
+			// Change both states
+			direct_change_resource_state(cmdI, inputBuffer->resource, inputBuffer->state, D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE,
+				outputBuffer->resource, outputBuffer->state, D3D12_RESOURCE_STATE_UNORDERED_ACCESS);
+
 			D3D12_LINEAR_ALGEBRA_MATRIX_CONVERSION_INFO infoDesc =
 			{
 				// DestInfo
