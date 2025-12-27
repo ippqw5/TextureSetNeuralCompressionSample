@@ -54,5 +54,56 @@ You can also get more info about the command line options by running:
         --texture-mode Pick the texture mode [0 = Uncompressed, 1 = BC6, 2 = Neural].
         --filtering-mode Pick the filtering mode [0 = Nearest, 1 = Linear, 2 = Anisotropic].
 
+## Resources
+The textures used are located in `models/michel`. The folder contains three subfolders:
+```
+models/michel$ tree -h
+[4.0K]  .
+├── [4.0K]  bc1_mip # Neural compressed textures --> (trained features(in BC1 format) + trained mlp decoder)
+│   ├── [ 23K]  mlp_0.bin
+│   ├── [ 11M]  tex0_0.bc1 
+│   ├── [ 11M]  tex1_0.bc1 
+│   ├── [2.7M]  tex2_0.bc1 
+│   └── [2.7M]  tex3_0.bc1 
+├── [4.0K]  bc6 # BC6 compressed textures
+│   ├── [ 21M]  tex0.bc6
+│   ├── [ 21M]  tex1.bc6
+│   ├── [ 21M]  tex2.bc6
+│   ├── [ 21M]  tex3.bc6
+│   └── [ 21M]  tex4.bc6
+└── [4.0K]  uncompressed # Uncompressed textures
+    ├── [ 85M]  tex0.tex_bin
+    ├── [ 85M]  tex1.tex_bin
+    ├── [ 85M]  tex2.tex_bin
+    ├── [ 85M]  tex3.tex_bin
+    └── [ 85M]  tex4.tex_bin
+```
+
+`.bc1` and `.bc6` data layout:
+```
+OFFSET(in bytes)  | Description
+------------------|-----------------------------
+0                 | width / 4 (in blocks)
+4                 | height / 4 (in blocks)
+8                 | number of mip levels
+12                | uv.x offset
+16                | uv.y offset   
+20                | start of compressed data
+```
+
+```
+Texture       |   width  |  height  |  mip levels | 
+--------------|----------|------------------------|
+tex0_0.bc1    |  1024    |  1024    |     13      |
+tex1_0.bc1    |  1024    |  1024    |     13      |
+tex2_0.bc1    |  512     |   512    |     12      |
+tex3_0.bc1    |  512     |   512    |     12      |
+---------------------------------------------------
+tex0.bc6      |  1024    |  1024    |     12      |  
+tex1.bc6      |  1024    |  1024    |     12      |
+tex2.bc6      |  1024    |  1024    |     12      |
+tex3.bc6      |  1024    |  1024    |     12      |
+tex4.bc6      |  1024    |  1024    |     12      |
+```
 ## License
 Intel® Texture Set Neural Compression Sample is licensed under the [MIT License](LICENSE).

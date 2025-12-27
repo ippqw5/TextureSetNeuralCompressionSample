@@ -129,7 +129,7 @@ void TextureManager::upload_textures(CommandQueue cmdQ, CommandBuffer cmdB, cons
 		m_UncompressedSet.tex4 = read_binary_texture_and_upload(m_Device, cmdQ, cmdB, tex4Path);
 	}
 
-	// Uncompressed textures
+	// BC6 textures
 	{
 		const std::string tex0Path = modelDir + "\\" + modelName + "\\bc6\\tex0.bc6";
 		m_BC6Set.tex0 = read_bc6_texture_and_upload(m_Device, cmdQ, cmdB, tex0Path);
