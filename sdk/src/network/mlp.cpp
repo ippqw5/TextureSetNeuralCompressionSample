@@ -191,4 +191,13 @@ void unpack_type(const char*& stream, CPUMLP& mlp)
     const uint32_t mlp2Size = mlp.mlp2Width * mlp.mlp2Height + mlp.mlp2Width;
     mlp.mlp2Buffer.resize(mlp2Size);
     unpack_buffer(stream, mlp2Size * sizeof(float), (char*)mlp.mlp2Buffer.data());
+
+    // print metadata
+	std::cout << "MLP info: " << std::endl;
+	std::cout << "  nbMlp: " << mlp.nbMlp << std::endl;
+	std::cout << "  finalChannelCount: " << mlp.finalChannelCount << std::endl;
+	std::cout << "  finalBlockWidth: " << mlp.finalBlockWidth << std::endl;
+	std::cout << "  MLP0: " << mlp.mlp0Width << " x " << mlp.mlp0Height << std::endl;
+	std::cout << "  MLP1: " << mlp.mlp1Width << " x " << mlp.mlp1Height << std::endl;
+	std::cout << "  MLP2: " << mlp.mlp2Width << " x " << mlp.mlp2Height << std::endl;
 }

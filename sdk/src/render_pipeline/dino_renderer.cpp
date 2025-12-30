@@ -63,7 +63,7 @@ void DinoRenderer::initialize(uint64_t hInstance, const CommandLineOptions& opti
     else
         m_Device = graphics::device::create_graphics_device(DevicePickStrategy::VRAMSize);
 
-    m_Window = graphics::window::create_window(m_Device, (uint64_t)hInstance, 1920, 1080, "Intel TSNC (DX12)");
+    m_Window = graphics::window::create_window(m_Device, (uint64_t)hInstance, 1920, 1080, "BC1 Neural Compression");
     m_CmdQueue = graphics::command_queue::create_command_queue(m_Device);
     m_SwapChain = graphics::swap_chain::create_swap_chain(m_Window, m_Device, m_CmdQueue, FRAME_BUFFER_FORMAT);
     m_CmdBuffer = graphics::command_buffer::create_command_buffer(m_Device);

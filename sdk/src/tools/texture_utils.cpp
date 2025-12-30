@@ -109,6 +109,15 @@ namespace binary_texture
 		unpack_bytes(binaryPtr, bt.format);
 		unpack_bytes(binaryPtr, bt.type);
 		unpack_vector_bytes(binaryPtr, bt.data);
+
+		// print header info
+		std::cout << "Binary Texture Info:" << path << std::endl;
+		std::cout << " Width: " << bt.width << std::endl;
+		std::cout << " Height: " << bt.height << std::endl;
+		std::cout << " Depth: " << bt.depth << std::endl;
+		std::cout << " Mip Count: " << bt.mipCount << std::endl;
+		std::cout << " Format: " << bt.format << std::endl;
+		std::cout << " Type: " << bt.type << std::endl;
 	}
 
 	void export_binary_texture(const BinaryTexture& bt, const char* path)

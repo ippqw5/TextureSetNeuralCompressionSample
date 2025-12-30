@@ -10,6 +10,8 @@
 // Internal includes
 #include "math/types.h"
 
+#include <iostream>
+
 // General graphics objects
 typedef uint64_t GraphicsDevice;
 typedef uint64_t RenderWindow;
@@ -129,6 +131,20 @@ enum class TextureType
 	TexCubeArray,
 	Count
 };
+inline std::ostream& operator<<(std::ostream& os, TextureType type) {
+	switch (type) {
+		case TextureType::Tex1D: os << "Tex1D"; break;
+		case TextureType::Tex1DArray: os << "Tex1DArray"; break;
+		case TextureType::Tex2D: os << "Tex2D"; break;
+		case TextureType::Tex2DArray: os << "Tex2DArray"; break;
+		case TextureType::Tex3D: os << "Tex3D"; break;
+		case TextureType::TexCube: os << "TexCube"; break;
+		case TextureType::TexCubeArray: os << "TexCubeArray"; break;
+		case TextureType::Count: os << "Count"; break;
+		default: os << "Unknown"; break;
+	}
+	return os;
+}
 
 // Texture formats supported
 enum class TextureFormat
@@ -187,6 +203,54 @@ enum class TextureFormat
 	// Count
 	Count
 };
+inline std::ostream& operator<<(std::ostream& os, TextureFormat format) {
+    switch (format) {
+        case TextureFormat::R8_SNorm: os << "R8_SNorm"; break;
+        case TextureFormat::R8_UNorm: os << "R8_UNorm"; break;
+        case TextureFormat::R8_SInt: os << "R8_SInt"; break;
+        case TextureFormat::R8_UInt: os << "R8_UInt"; break;
+        case TextureFormat::R8G8_SNorm: os << "R8G8_SNorm"; break;
+        case TextureFormat::R8G8_UNorm: os << "R8G8_UNorm"; break;
+        case TextureFormat::R8G8_SInt: os << "R8G8_SInt"; break;
+        case TextureFormat::R8G8_UInt: os << "R8G8_UInt"; break;
+        case TextureFormat::R8G8B8A8_SNorm: os << "R8G8B8A8_SNorm"; break;
+        case TextureFormat::R8G8B8A8_UNorm: os << "R8G8B8A8_UNorm"; break;
+        case TextureFormat::R8G8B8A8_UNorm_SRGB: os << "R8G8B8A8_UNorm_SRGB"; break;
+        case TextureFormat::R8G8B8A8_UInt: os << "R8G8B8A8_UInt"; break;
+        case TextureFormat::R8G8B8A8_SInt: os << "R8G8B8A8_SInt"; break;
+        case TextureFormat::R16_Float: os << "R16_Float"; break;
+        case TextureFormat::R16_SInt: os << "R16_SInt"; break;
+        case TextureFormat::R16_UInt: os << "R16_UInt"; break;
+        case TextureFormat::R16G16_Float: os << "R16G16_Float"; break;
+        case TextureFormat::R16G16_SInt: os << "R16G16_SInt"; break;
+        case TextureFormat::R16G16_UInt: os << "R16G16_UInt"; break;
+        case TextureFormat::R16G16B16A16_Float: os << "R16G16B16A16_Float"; break;
+        case TextureFormat::R16G16B16A16_UInt: os << "R16G16B16A16_UInt"; break;
+        case TextureFormat::R16G16B16A16_SInt: os << "R16G16B16A16_SInt"; break;
+        case TextureFormat::R32_Float: os << "R32_Float"; break;
+        case TextureFormat::R32_SInt: os << "R32_SInt"; break;
+        case TextureFormat::R32_UInt: os << "R32_UInt"; break;
+        case TextureFormat::R32G32_Float: os << "R32G32_Float"; break;
+        case TextureFormat::R32G32_SInt: os << "R32G32_SInt"; break;
+        case TextureFormat::R32G32_UInt: os << "R32G32_UInt"; break;
+        case TextureFormat::R32G32B32_UInt: os << "R32G32B32_UInt"; break;
+        case TextureFormat::R32G32B32_Float: os << "R32G32B32_Float"; break;
+        case TextureFormat::R32G32B32A32_Float: os << "R32G32B32A32_Float"; break;
+        case TextureFormat::R32G32B32A32_UInt: os << "R32G32B32A32_UInt"; break;
+        case TextureFormat::R32G32B32A32_SInt: os << "R32G32B32A32_SInt"; break;
+        case TextureFormat::Depth32: os << "Depth32"; break;
+        case TextureFormat::Depth32Stencil8: os << "Depth32Stencil8"; break;
+        case TextureFormat::Depth24Stencil8: os << "Depth24Stencil8"; break;
+        case TextureFormat::R10G10B10A2_UNorm: os << "R10G10B10A2_UNorm"; break;
+        case TextureFormat::R10G10B10A2_UInt: os << "R10G10B10A2_UInt"; break;
+        case TextureFormat::R11G11B10_Float: os << "R11G11B10_Float"; break;
+        case TextureFormat::BC1_RGB: os << "BC1_RGB"; break;
+        case TextureFormat::BC6_RGB: os << "BC6_RGB"; break;
+        case TextureFormat::Count: os << "Count"; break;
+        default: os << "Unknown"; break;
+    }
+    return os;
+}
 
 enum class FilterMode
 {

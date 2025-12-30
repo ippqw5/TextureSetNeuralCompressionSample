@@ -67,6 +67,10 @@ void TSNC::reload_network(const std::string& modelDir, uint32_t numSets)
         const char* rawData = (const char*)mlpBuffer.data();
         unpack_type(rawData, m_MLPArray[setIdx]);
         mlp::align_dimensions(m_MLPArray[setIdx]);
+        std::cout << "MLP0_IN_DIM: " << m_MLPArray[setIdx].mlp0Height << std::endl;
+        std::cout << "MLP0_OUT_DIM: " << m_MLPArray[setIdx].mlp0Width <<  std::endl;
+        std::cout << "MLP1_OUT_DIM: " << m_MLPArray[setIdx].mlp1Width <<  std::endl;
+        std::cout << "MLP2_OUT_DIM: " << m_MLPArray[setIdx].mlp2Width <<  std::endl;
 
         // Load the textures
         m_TexData[4 * setIdx + 0].texBuffer = load_bc1_to_graphics_buffer(m_Device, (modelDir + "\\tex0_" + std::to_string(setIdx) + ".bc1").c_str(), m_TexData[4 * setIdx + 0].texSize, m_UVOffset[4 * setIdx + 0]);
